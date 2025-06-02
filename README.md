@@ -1,1 +1,1 @@
-# course-python-workshop
+# Course Python workshop
