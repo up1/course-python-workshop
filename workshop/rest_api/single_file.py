@@ -1,4 +1,4 @@
-# !pip install fastapi uvicorn pydantic mysql-connector-python
+# !pip install fastapi uvicorn pydantic mysql-connector-python pytest httpx pytest-asyncio
 
 from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
@@ -48,6 +48,14 @@ def insert_user(user: DBModel):
         cursor.execute(insert_query, values)
         mydb.commit()
     except mysql.connector.Error as err:
+        print(f"Error: {err}")
         raise HTTPException(status_code=400, detail=f"Error: {err}")
 
     return {"message": "User inserted successfully"}
+
+def create_app():
+    return app
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
