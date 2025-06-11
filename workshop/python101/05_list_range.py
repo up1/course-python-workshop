@@ -1,5 +1,6 @@
 def main():
     table = []
+    # table = [[i * j for j in range(1, 11)] for i in range(1, 11)]
     for i in range(1, 11):
         row = []
         for j in range(1, 11):
